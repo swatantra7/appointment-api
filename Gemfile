@@ -7,6 +7,7 @@ ruby '2.5.8'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
+gem 'acts_as_api', '1.0.1'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'devise'

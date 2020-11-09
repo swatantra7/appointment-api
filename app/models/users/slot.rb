@@ -1,11 +1,24 @@
 class Users::Slot < ApplicationRecord
 
+  acts_as_api
+
   belongs_to :user
 
-  def self.avaliable
-    appointments = Appointment.where(from: Date.today.beginning_of_week..Date.today.end_of_week)
-    user_slot_id = appointments.pluck(:users_slot_id)
-    all.where.not(id: user_slot_id)
+  scope :avaliable, -> {where.not(status: 'booked')}
+
+  api_accessible :details do |t|
+    t.add :user_id, as: :doctor_id
+    t.add :schedule_from
+    t.add :schedule_to
+  end
+
+  private
+
+  def schedule_from
+
+  end
+
+  def schedule_to
   end
 
 end

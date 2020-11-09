@@ -37,10 +37,12 @@ User.doctors.each do |user|
     values.each do |val|
       schedule_from = val.split('-')[0]
       schedule_to = val.split('-')[1]
+      now = DateTime.now
+      schedule_from = DateTime.new(now.year, now.month, Date.today.day+key.to_i, schedule_from.to_i, 0, 0, now.zone)
+      schedule_to = DateTime.new(now.year, now.month, Date.today.day+key.to_i, schedule_to.to_i, 0, 0, now.zone)
       user_slot = user.users_slots.new(
-        from: schedule_from,
-        to: schedule_to,
-        day: key
+        schedule_from: schedule_from,
+        schedule_to: schedule_to
       )
       user_slot.save
     end
