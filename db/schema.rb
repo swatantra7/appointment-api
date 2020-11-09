@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_033918) do
+ActiveRecord::Schema.define(version: 2020_11_09_102540) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "from"
+    t.datetime "to"
+    t.integer "patient_id"
+    t.integer "doctor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "users_slot_id"
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -36,9 +51,12 @@ ActiveRecord::Schema.define(version: 2020_11_09_033918) do
 
   create_table "users_slots", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "appointment_date"
+    t.string "from"
+    t.string "to"
+    t.integer "day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_users_slots_on_user_id"
   end
 
   create_table "users_tokens", force: :cascade do |t|

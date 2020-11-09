@@ -4,7 +4,7 @@ info:
   title: API V1
   version: v1
 paths:
-  "/login":
+  "/api/users/login":
     post:
       summary: User Login
       tags:
@@ -31,7 +31,7 @@ paths:
               - title
               - content
 servers:
-- url: https://{defaultHost}
+- url: http://localhost:3000
   variables:
     defaultHost:
-      default: www.example.com
+      default: localhost:3000

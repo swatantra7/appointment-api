@@ -1,9 +1,9 @@
 RSpec.describe 'api/users', type: :request do
-  path '/login' do
+  path '/api/users/login' do
     post 'User Login' do
       tags 'Login'
       consumes 'application/json'
-      parameter email: :user, in: :body, schema: {
+      parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
           email: { type: :string },
@@ -13,11 +13,11 @@ RSpec.describe 'api/users', type: :request do
       }
 
       response '201', 'User Login' do
-        let(:user) { { name: 'foo' } }
+        let(:user) { { name: 'patients' } }
         run_test!
       end
       response '422', 'invalid request' do
-        let(:user) { { name: 'foo' } }
+        let(:user) { { name: 'patient' } }
         run_test!
       end
     end
