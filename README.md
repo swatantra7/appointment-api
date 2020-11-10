@@ -41,4 +41,13 @@ Use following rake to generate secret keys -
 No background jobs added yet.
 
 
+# Api Documentation
+
+* http://localhost:3000/api-docs/index.html
+
+Need to Login Using email - patient@example.com, password- password(created from seed)
+
+create token and then click on authorize and enter "Token token= {token}" inside value.
+
+
 ## Automated Testing Setup
