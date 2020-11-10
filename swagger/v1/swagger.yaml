@@ -1,0 +1,124 @@
+---
+swagger: '2.0'
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/users/appointments":
+    post:
+      summary: Create Appointment
+      tags:
+      - Appointment
+      consumes:
+      - application/json
+      security:
+      - Bearer: {}
+      parameters:
+      - name: appointment
+        in: body
+        schema:
+          type: object
+          properties:
+            doctor_id:
+              type: integer
+            slot_id:
+              type: integer
+          required:
+          - doctor_id
+          - slot_id
+      responses:
+        '201':
+          description: Appointment
+        '422':
+          description: invalid request
+    get:
+      summary: All Appointments
+      tags:
+      - Appointments
+      consumes:
+      - application/json
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Appointment
+        '422':
+          description: invalid request
+  "/api/users/appointments/{doctor_id}/appointments":
+    get:
+      summary: Appointments For Doctor
+      tags:
+      - Appointments
+      consumes:
+      - application/json
+      security:
+      - Bearer: {}
+      parameters:
+      - name: doctor_id
+        in: path
+        type: string
+        required: true
+      responses:
+        '200':
+          description: Appointment found
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              schedule_from:
+                type: datetime
+              schedule_to:
+                type: datetime
+        '422':
+          description: invalid request
+  "/api/users/slots":
+    get:
+      summary: Slots
+      tags:
+      - Slots
+      consumes:
+      - application/json
+      security:
+      - Bearer: {}
+      responses:
+        '200':
+          description: Slots
+        '422':
+          description: invalid request
+  "/api/users/login":
+    post:
+      summary: User Login
+      tags:
+      - Login
+      consumes:
+      - application/json
+      parameters:
+      - name: user
+        in: body
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+          - title
+          - content
+      responses:
+        '201':
+          description: User Login
+        '422':
+          description: invalid request
+securityDefinitions:
+  Bearer:
+    description: Authorization
+    type: apiKey
+    name: Authorization
+    in: header
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: localhost:3000

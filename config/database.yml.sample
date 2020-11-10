@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  username: pgdevadmin
+  password: test123
+
+development:
+  <<: *default
+  database: appointment_dev
+
+test:
+  <<: *default
+  database: appointment_test
+
+production:
+  <<: *default
+  database: appointment_prod
