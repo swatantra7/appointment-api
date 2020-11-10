@@ -5,6 +5,9 @@ class Appointment < ApplicationRecord
   before_create :assign_to_from
   after_create :update_user_slot
   belongs_to :users_slot, class_name: '::Users::Slot'
+  belongs_to :patient, class_name: "User", foreign_key: 'patient_id'
+  belongs_to :doctor, class_name: "User", foreign_key: 'doctor_id'
+
 
   validates_uniqueness_of :users_slot_id
 
