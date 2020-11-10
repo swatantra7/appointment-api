@@ -18,6 +18,7 @@ class Users::Slot < ApplicationRecord
   belongs_to :user
 
   api_accessible :details do |t|
+    t.add :id, as: :slot_id
     t.add :user_id, as: :doctor_id
     t.add :schedule_from
     t.add :schedule_to

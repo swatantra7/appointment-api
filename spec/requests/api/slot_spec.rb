@@ -1,5 +1,4 @@
 RSpec.describe 'api/users/slots', type: :request do
-  let(:Authorization) { "Bearer #{access_token}" }
   path '/api/users/slots' do
     get 'Slots' do
       tags 'Slots'

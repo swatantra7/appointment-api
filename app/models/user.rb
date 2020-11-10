@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :tokens, :class_name=> "::Users::Token", dependent: :destroy
   has_many :users_slots, class_name: 'Users::Slot',dependent: :destroy
-
+  has_many :appointments, class_name: 'Appointment', foreign_key: 'patient_id'
   belongs_to :role
 
   scope :doctors, -> { where(role_id: Role.find_by(name: 'doctor').id) }

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     end
     namespace :users do
       resources :slots
+      resources :appointments do
+        collection do
+          get ":doctor_id/appointments", to: "appointments#appointments"
+        end
+      end
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
