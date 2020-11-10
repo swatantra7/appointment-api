@@ -1,10 +1,11 @@
 module Api
   module Users
-    class SlotsController < ApplicationController
+    class SlotsController < Api::UsersController
 
       def index
-        slots = Users::Slot.avaliable
-        render json: slots, status: 200 and return
+        slots = ::Users::Slot.avaliable
+        slots = slots.as_api_response(:details)
+        render json: { status: true, slots: slots }, status: 200
       end
 
     end

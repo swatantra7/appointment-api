@@ -12,6 +12,7 @@ gem 'acts_as_api', '1.0.1'
 gem 'puma', '~> 4.1'
 gem 'devise'
 gem 'request_store', '1.4.1'
+gem 'aasm'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
